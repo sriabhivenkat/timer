@@ -1,22 +1,57 @@
-import logo from './logo.svg';
+import React, {useState, useEffect} from 'react';
 import './App.css';
 
 function App() {
+
+  const timeLeft = () => {
+    let year = new Date().getFullYear();
+    const difference = +new Date(`7/24/${year}`) - +new Date();
+    let remaining = {};
+
+    if(difference > 0) {
+      remaining = {
+        days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+        hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+        minutes: Math.floor((difference / 1000 / 60) % 60),
+        seconds: Math.floor((difference / 1000) % 60)
+      };
+    }
+    
+    return remaining;
+  }
+
+  const [remainingTime, setRemainingTime] = useState(timeLeft());
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setRemainingTime(timeLeft());
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <h1>Time before Trisha gets back!</h1>
+        <div className="countdown">
+          <div className="countdown-item">
+            <div className="countdown-item-number">{remainingTime.days}</div>
+            <div className="countdown-item-label">Days</div>
+          </div>
+          <div className="countdown-item">
+            <div className="countdown-item-number">{remainingTime.hours}</div>
+            <div className="countdown-item-label">Hours</div>
+          </div>
+          <div className="countdown-item">
+            <div className="countdown-item-number">{remainingTime.minutes}</div>
+            <div className="countdown-item-label">Minutes</div>
+          </div>
+          <div className="countdown-item">
+            <div className="countdown-item-number">{remainingTime.seconds}</div>
+            <div className="countdown-item-label">Seconds</div>
+          </div>
+        </div>
       </header>
     </div>
   );

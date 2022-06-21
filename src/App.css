@@ -28,6 +28,21 @@
   color: #61dafb;
 }
 
+.countdown {
+  width: 1000px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.countdown-item-number {
+  font-size: 100px;
+  font-weight: bold;
+  color: white;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
