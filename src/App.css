@@ -54,9 +54,9 @@
 }
 
 .percentRemainingNumber {
-  font-size: 50px;
+  font-size: 20px;
   font-weight: bold;
-  color: red;
+  color: rgb(176, 71, 71);
 }
 
 
