@@ -10,6 +10,7 @@ function App() {
 
     if(difference > 0) {
       remaining = {
+        weeks: Math.floor(difference / (1000 * 60 * 60 * 24 * 7)),
         days: Math.floor(difference / (1000 * 60 * 60 * 24)),
         hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
         minutes: Math.floor((difference / 1000 / 60) % 60),
@@ -50,6 +51,11 @@ function App() {
           <div className="countdown-item">
             <div className="countdown-item-number">{remainingTime.seconds}</div>
             <div className="countdown-item-label">Seconds</div>
+          </div>
+        </div>
+        <div className="countdown">
+          <div className="countdown-item">
+            <div className="countdown-item-number">{(remainingTime?.weeks/8)*100}%</div>
           </div>
         </div>
       </header>
