@@ -53,9 +53,9 @@ function App() {
             <div className="countdown-item-label">Seconds</div>
           </div>
         </div>
-        <div className="countdown">
+        <div className="percentRemaining">
           <div className="countdown-item">
-            <div className="countdown-item-number">{(remainingTime?.weeks/8)*100}%</div>
+            <div className="percentRemainingNumber">{(remainingTime?.weeks/8)*100}% remaining in the trip</div>
           </div>
         </div>
       </header>
